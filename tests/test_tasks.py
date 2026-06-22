@@ -4,13 +4,13 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_list_tasks_returns_list():
+def test_root_endpoint():
     """
-    Teste didático:
-    - Faz GET em /tasks
+    Teste simples:
+    - Faz GET em /
     - Verifica status 200
-    - Garante que o retorno é uma lista
+    - Confere se a mensagem está correta
     """
-    response = client.get("/tasks")
+    response = client.get("/")
     assert response.status_code == 200
-    assert isinstance(response.json(), list)
+    assert response.json() == {"message": "API funcionando com sucesso!"}
